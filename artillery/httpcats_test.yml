@@ -1,0 +1,28 @@
+config:
+  target: "https://http.cat"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+      name: "Test wydajnosciowy"
+  payload:
+    path: "kody-statusow.csv"
+    fields:
+      - "kodStatusu"
+  defaults:
+    headers:
+      Content-Type: "application/json"
+
+scenarios:
+  - flow:
+      - get:
+          url: "/{{ kodStatusu }}"
+      - post:
+          url: "/{{ kodStatusu }}"
+          json:
+            kod: "{{ kodStatusu }}"
+            opis: "Testowy opis dla kodu statusu HTTP"
+
+ensure:
+  p95: "<=200"
+  max: "<=500"
+  median: "<=100"
