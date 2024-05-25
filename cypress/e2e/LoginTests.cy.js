@@ -1,5 +1,5 @@
-import LoginPage from '../pages/Login';
-import HomePage from '../pages/HomePage';
+import LoginPage from '../pages/login.js';
+import HomePage from '../pages/HomePage.js';
 
 describe('Login and Logout Tests', () => {
   const loginPage = new LoginPage();
